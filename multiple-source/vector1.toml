@@ -1,0 +1,28 @@
+data_dir = "./vector_checkpoint"
+
+[api]
+enabled = true
+address = "127.0.0.1:8686"
+
+[sources.source1_logs]
+type         = "file"
+include      = ["./source1_tmp"]
+ignore_older_secs = 600
+
+[sources.source_2]
+type = "vector"
+address = "0.0.0.0:5000"
+
+[sources.source_3]
+type = "vector"
+address = "0.0.0.0:5001"
+
+
+
+[sinks.emit_syslog]
+inputs = ["source1_logs", "source_2", "source_3"]
+type = "console"
+encoding.codec = "json"
+
+
+

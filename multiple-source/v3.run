@@ -1,0 +1,1 @@
+tail -f source3_tmp | vector --config vector3.toml
